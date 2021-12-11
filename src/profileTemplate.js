@@ -1,8 +1,7 @@
-const generateTeam = () => {
-    
+const generatePage = teamData => {
+    console.log(teamData);
 }
 
-module.exports = templateData => {
-    console.log(templateData)
-    return ` `;
+module.exports = {
+    generatePage
 }

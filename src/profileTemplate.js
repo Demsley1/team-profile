@@ -15,41 +15,42 @@ const makeManager = Manager => {
 };
 
 const makeEngineer = Engineers => {
-    Engineers.forEach(x => {
-        return `
-        <section class="team-card card m-2">
-            <div class="card-top team-top">
-                <h3 class="m-2 text-light">${x.name}</h3>
-                <h4 class="m-3 text-white"><img class="icon" src="./images/engineerIcon.png">  ${x.role}</h4>
-            </div>
-            <div class="card-center list-group-flush p-4">
-                <p class="list-group-item">I.D: ${x.id}</p>
-                <p class="list-group-item">Email:   <a  href="mailto: ${x.email}">${x.email}</a></p>
-                <p class="list-group-item">GitHub Username:  <a href="https://github.com/${x.github}" target="_blank">${x.github}</a></p>
-            </div>
-        </section> 
-        `
-    })
+    for(let i = 0; i < Engineers.length; i++){
+        // **have to use for loop (not forEach) and destructure again to be able to get elements to be read and then return template string for use in html.
+        const { name, id, github, email, role } = Engineers[i]
+    return `
+    <section class="team-card card m-2">
+        <div class="card-top team-top">
+            <h3 class="m-2 text-light">${name}</h3>
+            <h4 class="m-3 text-white"><img class="icon" src="./images/engineerIcon.png">  ${role}</h4>
+        </div>
+        <div class="card-center list-group-flush p-4">
+            <p class="list-group-item">I.D: ${id}</p>
+            <p class="list-group-item">Email:   <a  href="mailto: ${email}">${email}</a></p>
+            <p class="list-group-item">GitHub Username:  <a href="https://github.com/${github}" target="_blank">${github}</a></p>
+        </div>
+    </section> 
+    `
+    };
 };
-
-
     
 const makeIntern = Interns => {
-    return Interns.forEach(x => {
-        `
-        <section class="team-card card m-2">
+    for(let i = 0; i < Interns.length; i++){
+        const { name, id, role, school, email } = Interns[i]
+    return `
+    <section class="team-card card m-2">
                 <div class="card-top team-top">
-                <h3 class="m-2 text-light ">${x.name}</h3>
-                <h4 class="text-white m-3"><img class="icon" src="./images//internIcon.png">  ${x.role}</h4>
+                <h3 class="m-2 text-light ">${name}</h3>
+                <h4 class="text-white m-3"><img class="icon" src="./images//internIcon.png">  ${role}</h4>
             </div>
             <div class="card-center list-group-flush p-4">
-                <p class="list-group-item">I.D: ${x.id}</p>
-                <p class="list-group-item">Email:   <a  href="mailto: ${x.email}">${x.email}</a></p>
-                <p class="list-group-item fst-italic">School: ${x.school}</p>
+                <p class="list-group-item">I.D: ${id}</p>
+                <p class="list-group-item">Email:   <a  href="mailto: ${email}">${email}</a></p>
+                <p class="list-group-item fst-italic">School: ${school}</p>
             </div>
     </section>
-        `
-    });
+    `
+    };
 }
 
 module.exports = Team => { 

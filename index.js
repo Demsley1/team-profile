@@ -19,7 +19,7 @@ const writeFile = fileContent => {
 
 const copyFile = () => {
     return new Promise((resolve, reject) => {
-        fs.copyFile('./src/file.css', './dist/style.css', err => {
+        fs.copyFile('./src/style.css', './dist/style.css', err => {
             if (err){
                 reject(err)
                 return;
@@ -31,6 +31,7 @@ const copyFile = () => {
         });
     });
 };
+
 
 new Team().teamProfile()
     .then(teamData => {
@@ -44,4 +45,5 @@ new Team().teamProfile()
     })
     .then(fileResponse => {
         console.log(fileResponse);
+        return copyFile(fileResponse)
     })

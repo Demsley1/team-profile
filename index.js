@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Team = require('./lib/teamBuild')
-const { generatePage } = require('./src/profileTemplate')
+const generatePage = require('./src/profileTemplate')
 
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
@@ -39,11 +39,9 @@ new Team().teamProfile()
     .then(team => {
        return generatePage(team)
     })
-    //return generatePage(team);
-    /*.then(pageHTML =>{
+    .then(pageHTML =>{
         return writeFile(pageHTML)
     })
     .then(fileResponse => {
         console.log(fileResponse);
-        return copyFile
-    })*/
+    })

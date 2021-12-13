@@ -45,9 +45,9 @@
 
   ![Screenshot1](./screenshots/screen1.png)
 
-  ![Screenshot2](./screenshots\screen2.png)
+  ![Screenshot2](./screenshots/screen2.png)
 
-  ![Screenshot3](./screenshots\screen3.png)
+  ![Screenshot3](./screenshots/screen3.png)
 
 - [Video Link](https://watch.screencastify.com/v/NyJhwMR19j9n5ujOUXgO)
 

@@ -38,6 +38,7 @@ new Team().teamProfile()
         return new Team().createTeam(teamData)
     })
     .then(team => {
+        console.log(team)
        return generatePage(team)
     })
     .then(pageHTML =>{

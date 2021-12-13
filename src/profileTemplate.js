@@ -1,44 +1,56 @@
+// return section for each property in the manager objcet.
 const makeManager = Manager => {    
     return  `
-    <section class="team-card card m-2">
-        <div class="card-top team-top">
-            <h3 class="m-2 text-light">${Manager.name}</h3>
-            <h4 class="text-white m-3"><img class="icon" src="./images/manager-icon-22.png">  ${Manager.role}</h4>
-        </div>
-        <div class="card-center list-group-flush p-4">
-            <p class="list-group-item">I.D: ${Manager.id}</p>
-            <p class="list-group-item">Email:   <a  href="mailto: ${Manager.email}">${Manager.email}</a></p>
-            <p class="list-group-item">Office I.D:  ${Manager.officeId}</p>
-        </div>
-    </section> 
-    `
+            <section class="team-card card m-2">
+                <div class="card-top team-top">
+                    <h3 class="m-2 text-light">${Manager.name}</h3>
+                    <h4 class="text-white m-3"><img class="icon" src="./images/manager-icon-22.png">  ${Manager.role}</h4>
+                </div>
+                <div class="card-center list-group-flush p-4">
+                    <p class="list-group-item">I.D: ${Manager.id}</p>
+                    <p class="list-group-item">Email:   <a  href="mailto: ${Manager.email}">${Manager.email}</a></p>
+                    <p class="list-group-item">Office I.D:  ${Manager.officeId}</p>
+                </div>
+            </section> 
+            `;
 };
 
+// Run functions that accepts the Engineers/Interns array as a parameter.
 const makeEngineer = Engineers => {
-    for(let i = 0; i < Engineers.length; i++){
-        // **have to use for loop (not forEach) and destructure again to be able to get elements to be read and then return template string for use in html.
-        const { name, github, email, id, role } = Engineers[i];
+    // Returns Engineers array and all values as a template literal
     return `
-        <section class="team-card card m-2">
-            <div class="card-top team-top">
-                <h3 class="m-2 text-light">${name}</h3>
-                <h4 class="m-3 text-white"><img class="icon" src="./images/engineerIcon.png">  ${role}</h4>
-            </div>
-            <div class="card-center list-group-flush p-4">
-                <p class="list-group-item">I.D: ${id}</p>
-                <p class="list-group-item">Email:   <a  href="mailto: ${email}">${email}</a></p>
-                <p class="list-group-item">GitHub Username:  <a href="https://github.com/${github}" target="_blank">${github}</a></p>
-            </div>
-        </section> 
-    `
-    };
+        ${Engineers
+            // filter out the Engineer objects in the array at each index
+            .filter(( Engineer ) => Engineer)
+            // Using the filtered out Engineer returned back in the original array, map out each index of array for the selected deconsructed variables,
+            // and then return in the same array at each index the section template literals with the deconstructed parameters invoked in each section.
+            .map(({ name, id, github, email, role }) => {
+            return `
+            <section class="team-card card m-2">
+                <div class="card-top team-top">
+                    <h3 class="m-2 text-light">${name}</h3>
+                    <h4 class="m-3 text-white"><img class="icon" src="./images/engineerIcon.png">  ${role}</h4>
+                </div>
+                <div class="card-center list-group-flush p-4">
+                    <p class="list-group-item">I.D: ${id}</p>
+                    <p class="list-group-item">Email:   <a  href="mailto: ${email}">${email}</a></p>
+                    <p class="list-group-item">GitHub Username:  <a href="https://github.com/${github}" target="_blank">${github}</a></p>
+                </div>
+            </section> 
+            `;
+            })
+            // join the new array with a space seperator, and close out template literal.
+            .join('')}`
 };
-    
+
+// Similar to above function
 const makeIntern = Interns => {
-    for(let i = 0; i < Interns.length; i++){
-        const { name, id, role, school, email } = Interns[i]
     return `
-        <section class="team-card card m-2">
+        ${Interns
+            .filter(( Intern ) => Intern)
+            .map(({ name, id, school, email, role }) => {
+            return `
+            <section class="team-card card m-2">
                     <div class="card-top team-top">
                     <h3 class="m-2 text-light ">${name}</h3>
                     <h4 class="text-white m-3"><img class="icon" src="./images//internIcon.png">  ${role}</h4>
@@ -48,14 +60,17 @@ const makeIntern = Interns => {
                     <p class="list-group-item">Email:   <a  href="mailto: ${email}">${email}</a></p>
                     <p class="list-group-item fst-italic">School: ${school}</p>
                 </div>
-        </section>
-    `
-    };
+            </section>
+            `;
+            })
+            .join('')}`
 }
 
 module.exports = Team => {  
+    // deconstruct the properties from the object Team
     const { Manager, Engineers, Interns } = Team
-   
+  
+    // return entire page as template literal string
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -71,11 +86,9 @@ module.exports = Team => {
         <header class="header">
             <h1>TEAM</h1>
         </header>
-        <main class="body">  
+        <main class="body">              
                 ${makeManager(Manager)}
-
-                ${makeEngineer(Engineers)}
-                
+                ${makeEngineer(Engineers)}        
                 ${makeIntern(Interns)}
         </main>
             

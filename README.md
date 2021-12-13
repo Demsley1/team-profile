@@ -41,8 +41,15 @@
   Included in hte project files are jest test to ensure the classes, and their associated mehtds are functioning. During submission all tests work and pass, but if any contributions where to be added for more portions of this app, they would too require new tests that would fail and then pass. 
 
   ## Screenshots
-  Here are screenshots of working application, and under is a video link to a brief walkthrouhg tutorial.
+  Here are screenshots of working application, and under is a video link to a brief walkthrough tutorial of how to use this app.
 
+  ![Screenshot1](./screenshots/screen1.png)
+
+  ![Screenshot2](./screenshots\screen2.png)
+
+  ![Screenshot3](./screenshots\screen3.png)
+
+- [Video Link]()
 
   ## Questions 
 
